@@ -1,1 +1,3 @@
 # Quadcopter
+
+Repository for my quadcopter personal project. More details to come...
