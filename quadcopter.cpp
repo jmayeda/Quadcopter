@@ -70,9 +70,33 @@ void loop() {
    *    write corrected pulse lengths to the ESC's to actuate the quadcopter.
    */
 
+    // initialize the gyro values variable
+    float gyroValues[3] = {0.0, 0.0, 0.0};
+
+    // update the gyro values by passing a pointer
+    updateGyro(&gyroValues);
+
+    // print the gyro values for debugging
+    for (int i = 0; i<3; i++) {
+      printf("%.1f \n", gyroValues[i]);
+    }
+
 }
 
 
 int calculatePID() {
 
+}
+
+
+void updateGyro(float *gyroValues) {
+    const int NUM_GYRO_MEAS = 3;
+
+    /* ...read gyro here... */
+    float gyroRaw[3] = {1.0, 2.0, 3.0}; // placeholder
+
+    // add the gyro values in the local scope to the gyroValues pointer
+    for (int i = 0; i < NUM_GYRO_MEAS; i++) {
+        *(gyroValues+i) = gyroRaw[i];
+    }
 }
