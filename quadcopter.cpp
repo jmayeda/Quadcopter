@@ -13,10 +13,12 @@
  * Ex: #include <Wire.h>  // used for I2C communication with devices
  */
 #include <Wire.h> // I2C communication with devices
+#include <EnableInterrupt> // for interacting with interrutps
 
 /*******************************************************************************
+ * Constants
  * TODO: Define constants here. There are two common ways to define constants
- *       in C.
+ *       in C/C++.
  * Ex: #define GREEN_LED_PIN 10
  * Ex: #define PI 3.14
  * Ex: const int GREEN_LED_PIN = 10;
@@ -57,24 +59,25 @@ typedef struct gyro_t {
 
 /*******************************************************************************
  * Global Variables
- *
+ * TODO: Add any global variables you need here.
  ******************************************************************************/
 gyro_t gyro;
 rc_signals_t rc_signal;
 arm_state_t arm_state;
 
 /*******************************************************************************
- * Function Declaration
- *
+ * Function Declarations
+ * TODO: Add any functions you make here.
  ******************************************************************************/
 void readGyro(gyro_t *gyro);
 int calculatePID();
 
-/**
+/*******************************************************************************
+ * void setup()
  *
- * @brief: Setup runs once and is used to setup and initialize all of the pins, and
- *         methods we will use later.
- */
+ * @brief: Setup runs once and is used to setup and initialize all of the pins,
+ *         and methods we will use later.
+ ******************************************************************************/
 void setup()
 {
   /* TODO: Add anything needed for setup here. */
@@ -87,11 +90,12 @@ void setup()
   // globalVariable = globalVariable + 10; // increment the globalVariable by 10
 }
 
-/**
+/*******************************************************************************
+ * void loop()
  *
  * @brief: runs continuously and is the main part of the code. This is where
  *         everything happens.
- */
+ ******************************************************************************/
 void loop()
 {
   /* loop Psuedocode
@@ -126,6 +130,7 @@ int calculatePID()
 
 /**
  * @brief: Read the gyro angular rates in deg/s and pass to gyro data struct.
+ * @call: readGyro(&gyro)
  * @param gyro pointer to struct to hold gyro angular rates.
  */
 void readGyro(gyro_t *gyro)

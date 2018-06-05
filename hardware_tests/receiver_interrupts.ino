@@ -13,7 +13,7 @@ uint32_t rc_start[RC_NUM_CHANNELS];
 volatile uint16_t rc_shared[RC_NUM_CHANNELS];
 
 // Read and copy values from rc_shared into array rc_values
-void rc_read_values(){
+void rc_read_values() {
   noInterrupts();
   memcpy(rc_values, (const void *)rc_shared, sizeof(rc_shared));
   interrupts();
@@ -36,7 +36,6 @@ void calc_ch3() { calc_input(RC_CH3, PB2); }
 void calc_ch4() { calc_input(RC_CH4, PB3); }
 
 void setup() {
-    // put your setup code here, to run once:
     Serial.begin(57600);
     DDRB = B00000000; // set D8 to D13 as inputs
     enableInterrupt(8, calc_ch1, CHANGE);
@@ -46,7 +45,6 @@ void setup() {
 }
 
 void loop() {
-    // Print values from digital pins 8 through 11
     rc_read_values();
     // Serial.print("CH1:"); Serial.print((PINB & (1<<PB0))); Serial.print("\t");
     // Serial.print("CH2:"); Serial.print((PINB & (1<<PB1))); Serial.print("\t");
